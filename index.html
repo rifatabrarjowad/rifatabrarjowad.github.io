@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rifat Abrar Jowad</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Base ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #222;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Typography ────────────────────────────────── */
+h1, h2, h3, .serif { font-family: 'Lora', Georgia, serif; }
+h1 { font-size: 1.9rem; font-weight: 500; letter-spacing: -0.01em; color: #111; line-height: 1.2; }
+h2 { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #888; margin-bottom: 1.4rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e8e8e8; }
+h3 { font-size: 1rem; font-weight: 500; color: #111; margin-bottom: 0.2rem; font-family: 'Lora', serif; }
+p { margin-bottom: 1rem; color: #333; }
+p:last-child { margin-bottom: 0; }
+a { color: #1a4a7a; text-decoration: none; transition: color 0.15s; }
+a:hover { color: #0d2d52; }
+strong { font-weight: 500; color: #111; }
+
+/* ── Layout ─────────────────────────────────────── */
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 0;
+}
+
+/* ── Sidebar ─────────────────────────────────────── */
+.sidebar {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  padding: 3.5rem 2.5rem 3rem 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.avatar-wrap {
+  margin-bottom: 1.4rem;
+}
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid #e0e0e0;
+  background: linear-gradient(135deg, #e8eef7 0%, #d0ddef 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lora', serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #3a5a8a;
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+.sidebar-name {
+  font-family: 'Lora', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #111;
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+}
+.sidebar-affil {
+  font-size: 0.82rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 1.4rem;
+}
+
+.sidebar-nav {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+.sidebar-nav li {
+  margin-bottom: 0.1rem;
+}
+.sidebar-nav a {
+  font-size: 0.87rem;
+  font-weight: 300;
+  color: #555;
+  display: block;
+  padding: 3px 0;
+  transition: color 0.15s;
+}
+.sidebar-nav a:hover { color: #1a4a7a; }
+.sidebar-nav a.active { color: #1a4a7a; font-weight: 500; }
+
+.sidebar-links {
+  margin-top: 1.5rem;
+}
+.sidebar-links a {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.82rem;
+  color: #666;
+  margin-bottom: 0.55rem;
+  transition: color 0.15s;
+}
+.sidebar-links a:hover { color: #1a4a7a; }
+.sidebar-links svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+.email-line {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 1rem;
+  word-break: break-all;
+}
+.email-line a { color: #1a4a7a; }
+
+/* ── Main Content ──────────────────────────────── */
+.main {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  padding: 3.5rem 0 4rem 3.5rem;
+  border-left: 1px solid #ebebeb;
+}
+
+/* ── Section ────────────────────────────────────── */
+.section {
+  margin-bottom: 3.8rem;
+}
+.section:last-child { margin-bottom: 0; }
+
+/* ── Hero / Intro ────────────────────────────────── */
+.intro-text {
+  font-family: 'Lora', serif;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: #2a2a2a;
+  margin-bottom: 1rem;
+}
+
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.badge {
+  font-size: 0.74rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  padding: 3px 11px;
+  border: 1px solid #c8d4e8;
+  border-radius: 2px;
+  color: #2d5080;
+  background: #f0f4fb;
+}
+
+/* ── Research Interests ─────────────────────────── */
+.interest-list {
+  list-style: none;
+  padding: 0;
+}
+.interest-list li {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.2rem;
+}
+.interest-list li:last-child { border-bottom: none; }
+.interest-name {
+  font-family: 'Lora', serif;
+  font-size: 0.97rem;
+  font-weight: 500;
+  color: #111;
+}
+.interest-desc {
+  font-size: 0.88rem;
+  color: #666;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Publications / Research ────────────────────── */
+.pub-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.pub-item:first-child { padding-top: 0; }
+.pub-item:last-child { border-bottom: none; }
+.pub-title {
+  font-family: 'Lora', serif;
+  font-size: 0.97rem;
+  font-weight: 500;
+  color: #1a4a7a;
+  margin-bottom: 0.2rem;
+}
+.pub-title a { color: #1a4a7a; }
+.pub-title a:hover { color: #0d2d52; }
+.pub-meta {
+  font-size: 0.83rem;
+  color: #666;
+  margin-bottom: 0.3rem;
+  margin: 0;
+}
+.pub-desc {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.65;
+  margin-top: 0.35rem;
+  margin-bottom: 0;
+}
+.pub-links {
+  margin-top: 0.4rem;
+  display: flex;
+  gap: 1rem;
+}
+.pub-links a {
+  font-size: 0.78rem;
+  color: #1a4a7a;
+  font-weight: 400;
+}
+
+/* ── Experience / Timeline ──────────────────────── */
+.timeline-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 0 1.4rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.timeline-item:first-child { padding-top: 0; }
+.timeline-item:last-child { border-bottom: none; }
+.timeline-date {
+  font-size: 0.78rem;
+  color: #999;
+  padding-top: 2px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+.timeline-title {
+  font-family: 'Lora', serif;
+  font-size: 0.97rem;
+  font-weight: 500;
+  color: #111;
+  margin-bottom: 0.1rem;
+}
+.timeline-org {
+  font-size: 0.84rem;
+  color: #1a4a7a;
+  margin-bottom: 0.35rem;
+  font-weight: 400;
+}
+.timeline-desc {
+  font-size: 0.87rem;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── Education ────────────────────────────────────── */
+.edu-item {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 0 1.4rem;
+}
+.edu-item:first-child { padding-top: 0; }
+.edu-item:last-child { border-bottom: none; }
+.edu-year { font-size: 0.78rem; color: #999; padding-top: 3px; font-weight: 400; }
+.edu-school {
+  font-family: 'Lora', serif;
+  font-size: 0.97rem;
+  font-weight: 500;
+  color: #111;
+  margin-bottom: 0.1rem;
+}
+.edu-degree { font-size: 0.85rem; color: #555; margin-bottom: 0.4rem; margin-top: 0; }
+.course-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.45rem;
+}
+.course-chip {
+  font-size: 0.72rem;
+  color: #666;
+  background: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+/* ── Technical Skills ──────────────────────────── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem 2rem;
+}
+.skill-group { }
+.skill-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 0.35rem;
+  display: block;
+}
+.skill-items {
+  font-size: 0.86rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* ── Projects (compact) ────────────────────────── */
+.project-row {
+  padding: 0.85rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.project-row:first-child { padding-top: 0; }
+.project-row:last-child { border-bottom: none; }
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.2rem;
+}
+.project-name {
+  font-family: 'Lora', serif;
+  font-size: 0.97rem;
+  font-weight: 500;
+  color: #111;
+}
+.project-type-tag {
+  font-size: 0.72rem;
+  color: #888;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+.project-body {
+  font-size: 0.87rem;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+.ptag {
+  font-size: 0.71rem;
+  color: #777;
+  border: 1px solid #e0e0e0;
+  padding: 1px 7px;
+  border-radius: 2px;
+}
+
+/* ── Contact ─────────────────────────────────────── */
+.contact-text {
+  font-size: 0.93rem;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.87rem;
+  color: #1a4a7a;
+  border: 1px solid #c8d4e8;
+  padding: 7px 16px;
+  border-radius: 2px;
+  transition: background 0.15s, border-color 0.15s;
+}
+.contact-link:hover {
+  background: #f0f4fb;
+  border-color: #9ab0ce;
+  color: #0d2d52;
+}
+.contact-link svg { width: 14px; height: 14px; }
+
+/* ── Footer ─────────────────────────────────────── */
+footer {
+  grid-column: 1 / 3;
+  border-top: 1px solid #ebebeb;
+  padding: 1.6rem 0;
+  text-align: center;
+  font-size: 0.77rem;
+  color: #aaa;
+  margin: 0 2rem;
+}
+
+/* ── Mobile ──────────────────────────────────────── */
+@media (max-width: 720px) {
+  .page {
+    grid-template-columns: 1fr;
+    padding: 0 1.4rem;
+  }
+  .sidebar {
+    grid-column: 1;
+    grid-row: 1;
+    position: static;
+    height: auto;
+    padding: 2.5rem 0 1.5rem;
+    border-bottom: 1px solid #ebebeb;
+  }
+  .main {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 2.5rem 0;
+    border-left: none;
+  }
+  footer { grid-column: 1; margin: 0; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .timeline-item, .edu-item { grid-template-columns: 70px 1fr; }
+  h1 { font-size: 1.5rem; }
+}
+
+/* ── Print ───────────────────────────────────────── */
+@media print {
+  .sidebar { position: static; height: auto; }
+  .page { display: block; }
+  .main { border: none; padding: 2rem 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ── SIDEBAR ─────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="avatar-wrap">
+      <div class="avatar">RAJ</div>
+    </div>
+
+    <div class="sidebar-name">Rifat Abrar Jowad</div>
+    <div class="sidebar-affil">
+      B.S. Computer Science &amp; Mathematics<br>
+      St. Edward's University<br>
+      Austin, Texas
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research Interests</a></li>
+      <li><a href="#work">Research Work</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Technical Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="sidebar-links">
+      <!-- GitHub -->
+      <a href="https://github.com/rifatabrarjowad/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+        </svg>
+        GitHub
+      </a>
+
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/rifatabrarjowad" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+        </svg>
+        LinkedIn
+      </a>
+
+      <!-- Website -->
+      <a href="https://rifatabrarjowad.com" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        Personal Site
+      </a>
+    </div>
+
+    <p class="email-line"><a href="mailto:rajdiprifat2004@gmail.com">rajdiprifat2004@gmail.com</a></p>
+  </aside>
+
+  <!-- ── MAIN ──────────────────────────────────── -->
+  <main class="main">
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <h2>About</h2>
+      <p class="intro-text">
+        I am an undergraduate studying Computer Science and Mathematics at St. Edward's University in Austin, Texas. My work sits at the boundary of intelligent systems, reliable software engineering, and the mathematical structures that underpin modern machine learning.
+      </p>
+      <p style="font-size:0.95rem; color:#444; line-height:1.85;">
+        My interest in AI research grew from a recurring tension I noticed while building production software: the gap between how systems are <em>designed to behave</em> and how they actually behave under real-world conditions. That tension motivates much of how I think about machine learning — not as a toolbox of techniques, but as a collection of open problems about reliability, generalization, and the relationship between scale and understanding.
+      </p>
+      <p style="font-size:0.95rem; color:#444; line-height:1.85;">
+        I founded a student-led AI Paper Reading Circle at St. Edward's to build a genuine research culture among undergraduates, and I have independently constructed an annotated NLP dataset for Banglish (Bangla-English code-mixed) sentiment analysis — a domain that remains severely underrepresented in the research literature. I view engineering experience not as separate from research but as foundational to it: the ability to implement and stress-test ideas is how theoretical intuitions become grounded.
+      </p>
+      <p style="font-size:0.95rem; color:#444; line-height:1.85;">
+        I am preparing to apply for PhD programs in AI/ML for Fall 2026, seeking research environments where rigorous theory and practical systems inform one another.
+      </p>
+
+      <div class="badge-row">
+        <span class="badge">Open to PhD · Fall 2026</span>
+        <span class="badge">AI / Machine Learning</span>
+        <span class="badge">NLP</span>
+        <span class="badge">Systems for ML</span>
+        <span class="badge">Austin, Texas</span>
+      </div>
+    </section>
+
+    <!-- RESEARCH INTERESTS -->
+    <section class="section" id="research">
+      <h2>Research Interests</h2>
+      <ul class="interest-list">
+        <li>
+          <span class="interest-name">Natural Language Processing &amp; Language Models</span>
+          <p class="interest-desc">Knowledge representation in large language models, retrieval-augmented generation, and the reliability of LLM outputs under distribution shift. I am particularly interested in how models trained on imbalanced or code-mixed corpora can be made more robust — motivated in part by my work on low-resource Banglish NLP.</p>
+        </li>
+        <li>
+          <span class="interest-name">Machine Learning Theory &amp; Generalization</span>
+          <p class="interest-desc">Theoretical foundations of deep learning, including generalization bounds, optimization landscapes, and the implicit biases of gradient-based training. I am drawn to questions that connect formal statistical theory to empirically observed phenomena in modern networks.</p>
+        </li>
+        <li>
+          <span class="interest-name">Reliable &amp; Scalable AI Systems</span>
+          <p class="interest-desc">The infrastructure challenges of deploying intelligent systems at scale: efficient serving, pipeline reliability, and the systems-level design decisions that determine whether ML research translates into robust production applications. My backend engineering background makes this intersection particularly natural for me.</p>
+        </li>
+        <li>
+          <span class="interest-name">Mathematical Foundations of Computing</span>
+          <p class="interest-desc">Probability theory, linear algebra, and discrete mathematics as formal tools for reasoning about algorithms and learning systems. I believe that mathematical fluency — not just mathematical familiarity — is what distinguishes research contributions that last from those that do not.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- RESEARCH WORK -->
+    <section class="section" id="work">
+      <h2>Research Work</h2>
+      <div class="pub-item">
+        <div class="pub-title">
+          <a href="https://github.com/rifatabrarjowad/Banglish-Ecommerce-Sentiment" target="_blank">
+            Banglish E-Commerce Sentiment Dataset: A Manually Labeled Corpus for Code-Mixed NLP
+          </a>
+        </div>
+        <p class="pub-meta">Rifat Abrar Jowad &nbsp;·&nbsp; Ongoing Research, 2025 &nbsp;·&nbsp; <em>Dataset available on GitHub</em></p>
+        <p class="pub-desc">
+          Constructed and manually annotated a corpus of Bangla-English code-mixed product reviews for sentiment analysis. Addresses a documented scarcity of labeled data for South Asian code-mixed language varieties. Annotation protocol follows established NLP labeling conventions. Ongoing research includes baseline model training and evaluation on the dataset. This project grew from an observation that the majority of NLP benchmark datasets reflect high-resource, monolingual settings — a gap that, if unaddressed, means real-world language users in multilingual communities are systematically underserved by deployed NLP systems.
+        </p>
+        <div class="pub-links">
+          <a href="https://github.com/rifatabrarjowad/Banglish-Ecommerce-Sentiment" target="_blank">Dataset →</a>
+          <a href="https://github.com/rifatabrarjowad/" target="_blank">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-title">AI Paper Reading Circle — Undergraduate Research Seminar</div>
+        <p class="pub-meta">Organizer &amp; Founder &nbsp;·&nbsp; St. Edward's University, 2024–Present</p>
+        <p class="pub-desc">
+          Founded and facilitate a weekly seminar in which students engage directly with primary AI/ML literature. Papers covered include foundational transformer architectures (Attention is All You Need, BERT, GPT), alignment-oriented work, and recent empirical investigations of LLM capabilities and failures. The group has covered papers from NeurIPS, ICML, ACL, and ICLR. Designed to build the close-reading skills that distinguish researchers from consumers of AI tools.
+        </p>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-title">Applied LLM Systems: RAG Pipelines &amp; Workflow Automation</div>
+        <p class="pub-meta">Independent Exploration &nbsp;·&nbsp; 2024–Present</p>
+        <p class="pub-desc">
+          Systematic exploration of retrieval-augmented generation architectures, LLM-based workflow automation, and structured output generation. This work, conducted in parallel with production engineering, is aimed at developing a practitioner-level understanding of where current LLM systems succeed and where they fail — the kind of grounded understanding that informs good research questions.
+        </p>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section" id="education">
+      <h2>Education</h2>
+      <div class="edu-item">
+        <div class="edu-year">2022–<br>2026</div>
+        <div>
+          <div class="edu-school">St. Edward's University</div>
+          <p class="edu-degree">B.S. Computer Science &amp; Mathematics &nbsp;·&nbsp; Austin, Texas</p>
+          <p style="font-size:0.84rem; color:#666; margin:0 0 0.5rem;">Coursework spanning theory of computation, statistical methods, mathematical proof, and applied AI systems.</p>
+          <div class="course-chips">
+            <span class="course-chip">Data Structures &amp; Algorithms</span>
+            <span class="course-chip">Discrete Mathematics</span>
+            <span class="course-chip">Linear Algebra</span>
+            <span class="course-chip">Probability &amp; Statistics</span>
+            <span class="course-chip">Machine Learning</span>
+            <span class="course-chip">Computer Architecture</span>
+            <span class="course-chip">Database Systems</span>
+            <span class="course-chip">Operating Systems</span>
+            <span class="course-chip">Assembly Language</span>
+            <span class="course-chip">Software Engineering</span>
+            <span class="course-chip">Theory of Computation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-year">2024</div>
+        <div>
+          <div class="edu-school">DeepLearning.AI &amp; IBM</div>
+          <p class="edu-degree">AI Engineering Specialization &amp; Deep Learning Courses</p>
+          <p style="font-size:0.84rem; color:#666; margin:0;">Completed coursework in neural network architectures, NLP pipelines, computer vision, and model evaluation. Public lab notebooks available on GitHub.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <h2>Experience</h2>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2023–<br>Present</div>
+        <div>
+          <div class="timeline-title">Backend Software Engineer</div>
+          <div class="timeline-org">Freelance — Austin, Texas</div>
+          <p class="timeline-desc">
+            Designed and shipped production backend systems for multiple clients across tax services, automotive, lead generation, and community web applications. Built RESTful APIs using Node.js, TypeScript, and NestJS; managed PostgreSQL, MySQL, MongoDB, and Redis databases; deployed with Docker and CI/CD pipelines. Clients include <a href="https://mhtaxsolutions.com" target="_blank">MH Tax Solutions</a>, Austin Ummah Soccer, and Ferraws Towing. Core focus: scalable architecture, clean code, and system reliability under real production conditions.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2024–<br>Present</div>
+        <div>
+          <div class="timeline-title">Founder &amp; Organizer, AI Paper Reading Circle</div>
+          <div class="timeline-org">St. Edward's University</div>
+          <p class="timeline-desc">
+            Founded a student-led research seminar focused on close reading of AI/ML primary literature. Facilitates weekly discussion sessions, selects papers from leading venues (NeurIPS, ICML, ACL, ICLR), and mentors peers in developing critical research evaluation skills.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2025</div>
+        <div>
+          <div class="timeline-title">NLP Researcher — Banglish Sentiment Dataset</div>
+          <div class="timeline-org">Independent Research</div>
+          <p class="timeline-desc">
+            Designed annotation schema and manually labeled a corpus of Bangla-English code-mixed e-commerce reviews. Established baseline NLP pipelines for sentiment classification. Work is ongoing; dataset is publicly released for community use.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2024–<br>Present</div>
+        <div>
+          <div class="timeline-title">AI Systems Developer — LLM Pipelines &amp; Automation</div>
+          <div class="timeline-org">Self-directed / Applied Research</div>
+          <p class="timeline-desc">
+            Building applied systems involving large language models: RAG pipeline construction, structured output generation, automation of multi-step workflows. Parallel to academic coursework, this work grounds theoretical understanding in concrete engineering constraints.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <h2>Selected Projects</h2>
+
+      <div class="project-row">
+        <div class="project-header">
+          <span class="project-name">Banglish E-Commerce Sentiment Dataset</span>
+          <span class="project-type-tag">NLP · Dataset Research</span>
+        </div>
+        <p class="project-body">Manually labeled corpus of code-mixed Bangla-English product reviews for sentiment analysis. Designed to fill a gap in annotated resources for South Asian multilingual NLP. Ongoing research on baseline model construction and evaluation. <a href="https://github.com/rifatabrarjowad/Banglish-Ecommerce-Sentiment" target="_blank">GitHub →</a></p>
+        <div class="project-tags">
+          <span class="ptag">Python</span><span class="ptag">NLP</span><span class="ptag">Annotation</span><span class="ptag">Low-resource Languages</span>
+        </div>
+      </div>
+
+      <div class="project-row">
+        <div class="project-header">
+          <span class="project-name">Lead Generation Engine</span>
+          <span class="project-type-tag">Applied AI · Production</span>
+        </div>
+        <p class="project-body">Production-grade Python system integrating LLM workflows, web data collection, and structured output pipelines for automated lead generation. Emphasis on reliability, configurable targeting, and clean output schemas. Private repository.</p>
+        <div class="project-tags">
+          <span class="ptag">Python</span><span class="ptag">LLM</span><span class="ptag">Automation</span><span class="ptag">Data Pipelines</span>
+        </div>
+      </div>
+
+      <div class="project-row">
+        <div class="project-header">
+          <span class="project-name">MH Tax Solutions</span>
+          <span class="project-type-tag">Full-stack · Production</span>
+        </div>
+        <p class="project-body">Production web platform for an Austin tax services business. Built for security, reliability, and ease of client interaction. <a href="https://mhtaxsolutions.com" target="_blank">Live →</a></p>
+        <div class="project-tags">
+          <span class="ptag">HTML/CSS</span><span class="ptag">JavaScript</span><span class="ptag">Backend</span>
+        </div>
+      </div>
+
+      <div class="project-row">
+        <div class="project-header">
+          <span class="project-name">DeepLearning.AI &amp; IBM AI Engineering Labs</span>
+          <span class="project-type-tag">Applied ML · Coursework</span>
+        </div>
+        <p class="project-body">Laboratory notebooks from the DeepLearning.AI specialization and IBM AI Engineering program — covering neural network implementation, CNNs, NLP pipelines, and model evaluation from first principles. <a href="https://github.com/rifatabrarjowad/deeplearning.ai" target="_blank">GitHub →</a></p>
+        <div class="project-tags">
+          <span class="ptag">Python</span><span class="ptag">PyTorch</span><span class="ptag">Jupyter</span><span class="ptag">Deep Learning</span>
+        </div>
+      </div>
+
+      <div class="project-row">
+        <div class="project-header">
+          <span class="project-name">Food Insecurity Prediction Model</span>
+          <span class="project-type-tag">Applied ML · Social Impact</span>
+        </div>
+        <p class="project-body">Python-based predictive model for food insecurity, applying supervised learning to socioeconomic datasets. Demonstrates applied ML in a domain with direct social relevance. Private repository.</p>
+        <div class="project-tags">
+          <span class="ptag">Python</span><span class="ptag">Scikit-learn</span><span class="ptag">Data Analysis</span>
+        </div>
+      </div>
+
+      <div class="project-row">
+        <div class="project-header">
+          <span class="project-name">Face Matching AI</span>
+          <span class="project-type-tag">Computer Vision · Python</span>
+        </div>
+        <p class="project-body">Python implementation of face detection and matching using computer vision techniques. One of earlier projects applying ML to a concrete visual recognition task. <a href="https://github.com/rifatabrarjowad/FaceMatchingAiProjectPy" target="_blank">GitHub →</a></p>
+        <div class="project-tags">
+          <span class="ptag">Python</span><span class="ptag">OpenCV</span><span class="ptag">Computer Vision</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS -->
+    <section class="section" id="skills">
+      <h2>Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <span class="skill-label">Languages</span>
+          <div class="skill-items">Python, TypeScript, JavaScript, Java, C, Assembly (x86)</div>
+        </div>
+        <div class="skill-group">
+          <span class="skill-label">ML / AI</span>
+          <div class="skill-items">PyTorch, Scikit-learn, Hugging Face Transformers, LLM APIs, RAG systems, Jupyter</div>
+        </div>
+        <div class="skill-group">
+          <span class="skill-label">Backend / Systems</span>
+          <div class="skill-items">Node.js, NestJS, REST APIs, Docker, CI/CD, Linux</div>
+        </div>
+        <div class="skill-group">
+          <span class="skill-label">Databases</span>
+          <div class="skill-items">PostgreSQL, MySQL, MongoDB, Redis</div>
+        </div>
+        <div class="skill-group">
+          <span class="skill-label">Mathematics</span>
+          <div class="skill-items">Linear Algebra, Probability Theory, Discrete Math, Statistics, Optimization</div>
+        </div>
+        <div class="skill-group">
+          <span class="skill-label">Research</span>
+          <div class="skill-items">NLP annotation, dataset construction, literature review, paper presentation</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <p class="contact-text">
+        I am actively seeking PhD programs in AI, Machine Learning, and related areas for Fall 2026 enrollment. I welcome correspondence from faculty working on language models, ML theory, and AI systems — and from researchers who share an interest in grounding theoretical AI work in real-world system constraints.
+      </p>
+      <p class="contact-text" style="margin-bottom:0;">
+        The best way to reach me is by email. I am also available on LinkedIn and GitHub for more informal professional contact.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:rajdiprifat2004@gmail.com" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          Email
+        </a>
+        <a href="https://github.com/rifatabrarjowad/" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+          </svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/rifatabrarjowad" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://rifatabrarjowad.com" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          Website
+        </a>
+      </div>
+    </section>
+
+  </main><!-- /main -->
+
+  <footer>
+    Rifat Abrar Jowad &nbsp;·&nbsp; St. Edward's University &nbsp;·&nbsp; Austin, Texas &nbsp;·&nbsp; Updated April 2026
+  </footer>
+
+</div><!-- /page -->
+
+<script>
+  /* Highlight active nav link on scroll */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.sidebar-nav a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
